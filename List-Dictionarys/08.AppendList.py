@@ -13,7 +13,5 @@ Write a program to append several lists of numbers.
 
 number_list = list(map(str, input().split('|')))
 numbers_OK = [number_list[x].split(' ') for x in range(len(number_list) - 1, -1, -1)]
-a = []
-for lst in numbers_OK:
-    tmp = [a.append(lst[y]) for y in range(0, len(lst)) if lst[y] != '']
+a = [lst[y] for lst in numbers_OK for y in range(0, len(lst)) if lst[y] != '']
 print(*a, end=" ")
