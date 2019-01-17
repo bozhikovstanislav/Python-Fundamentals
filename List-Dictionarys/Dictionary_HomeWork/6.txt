@@ -1,0 +1,23 @@
+text = input()
+inventory = {}
+ 
+while text != 'exam time':
+    operation = text.split(' ')
+    if operation[0] == 'stock':
+        if operation[1] in inventory.keys():
+            inventory[operation[1]] += int(operation[2])
+        else:
+            inventory[operation[1]] = int(operation[2])
+    elif operation[0] == 'buy':
+        if operation[1] in inventory.keys():
+            if inventory[operation[1]] > 0:
+                inventory[operation[1]] -= int(operation[2])
+            else:
+                print(f"{operation[1]} out of stock")
+        else:
+            print(f"{operation[1]} doesn't exist")
+    text = input()
+ 
+for key, val in inventory.items():
+    if val > 0:
+        print(f'{key} -> {val}')
