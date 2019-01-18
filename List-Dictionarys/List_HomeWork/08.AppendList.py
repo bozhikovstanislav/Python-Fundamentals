@@ -12,6 +12,12 @@ Write a program to append several lists of numbers.
 '''
 
 number_list = list(map(str, input().split('|')))
-numbers_OK = [number_list[x].split(' ') for x in range(len(number_list) - 1, -1, -1)]
-a = [lst[y] for lst in numbers_OK for y in range(0, len(lst)) if lst[y] != '']
+numbers_OK = []
+for x in range(len(number_list) - 1, -1, -1):
+    numbers_OK.append(number_list[x].split(' '))
+a = []
+for lst in numbers_OK:
+    for y in range(0, len(lst)):
+        if lst[y] != '':
+            a.append(lst[y])
 print(*a, end=" ")

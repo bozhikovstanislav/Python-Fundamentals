@@ -52,7 +52,6 @@ def input_personal(personal_info: dict):
     counter = 0
     while True:
         usr_person_pass = list(input().split(' -> '))
-        count_acurance = members(person_info, usr_person_pass)
         if usr_person_pass[0] == 'filter base':
             filter_base_p_info(personal_info)
             break
@@ -69,13 +68,14 @@ def filter_base_p_info(data_base_info: dict):
         val = {k: v for k, v in data_base_info.items()}
         if comand == 'Age':
             for k, v in val.items():
-                if is_int(v[1]) and is_positive(v[1]) and int(v[1]) > 0:
+                float(v[1])
+                if float(v[1]) % 1 == 0:
                     print(f'Name: {v[0]}')
                     print(f'Age: {v[1]}')
                     print_double_line()
         elif comand == 'Salary':
             for pv, pk in val.items():
-                if is_float(pk[1]) and not is_int(pk[1]) and is_positive(pk[1]):
+                if is_float(pk[1]) and not is_int(pk[1]):
                     print(f'Name: {pk[0]}')
                     print(f'Salary: {pk[1]}')
                     print_double_line()
