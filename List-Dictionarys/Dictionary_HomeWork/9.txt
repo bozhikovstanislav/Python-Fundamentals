@@ -1,0 +1,26 @@
+text = input()
+text = input()
+content = {}
+ 
+while text.find('->') != -1:
+    value = text.split(' -> ')
+    color = value[0]
+    cloth_type = value[1]
+    if color not in content.keys():
+        content[color] = cloth_type.split(',')
+    else:
+        content[color] += (cloth_type.split(','))
+    text = input()
+ 
+search = text.split(' ')
+ 
+for key, value in content.items():
+    print(f'{key} clothes:')
+    seen = {}
+    dedup_val = [seen.setdefault(x,x) for x in value if x not in seen]
+    for i in dedup_val:
+        nums = value.count(i)
+        if key == search[0] and i == search[1]:
+            print(f'* {i} - {nums} (found!)')
+        else:
+            print(f'* {i} - {nums}')
