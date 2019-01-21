@@ -48,20 +48,17 @@ def add_cloth(text):
 
             for key, v in wordrop_dic.items():
                 print(f'{key} clothes:')
-                for x, val in times_so_far(count_cloths(v)).items():
-                    if search(val, cloth_to_finde[1]):
-                        print('* ' + x, '-', times_so_far(count_cloths(v))[x], end="")
-                        print(' (found!)')
-                    else:
-                        print('* ' + x, '-', times_so_far(count_cloths(v))[x])
+                for x, val in times_so_far(count_cloths(v), cloth_to_finde[1]).items():
+                    print('* ' + x, '-', val, end="")
+                else:
+                    print('* ' + x, '-', val)
             break
 
 
 def search(values, searchFor):
     for k in values:
-        for v in values[k]:
-            if searchFor in v:
-                return True
+        if searchFor in k:
+            return True
     return False
 
 
@@ -79,10 +76,13 @@ def count_cloths(dictionary_list: list):
     return all_joined_list
 
 
-def times_so_far(ls):
+def times_so_far(ls, word_find):
     cloth = {}
     for word in ls:
-        cloth[word] = cloth.get(word, 0) + 1
+        if search(ls, word_find):
+            cloth[word] = str(cloth.get(word, 0) + 1) + '(found!)'
+        else:
+            cloth[word] = cloth.get(word, 0) + 1
     return cloth
 
 
