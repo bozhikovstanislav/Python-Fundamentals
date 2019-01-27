@@ -41,7 +41,7 @@ Entry4 === 10000
 comand = None
 banck_dic = {}
 while True:
-    person = list(input().split(' = '))
+    person = list(input().split(','))
     if person[0] == 'end':
         break
     elif person[0] == person[1]:
