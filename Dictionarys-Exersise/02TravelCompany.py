@@ -29,7 +29,7 @@ while data_travel.lower() != 'travel time!'.lower():
         if city_to_go in x:
             for xw, f in v.items():
                 seats += int(f)
-    if number_of_people < seats:
+    if number_of_people <= seats:
         print(f'{city_to_go} -> all {number_of_people} accommodated')
     elif number_of_people > seats:
         print(f'{city_to_go} -> all except {number_of_people - seats} accommodated')
